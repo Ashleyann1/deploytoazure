@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_27646c2b196f454c94048a9f369d1bb4 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_8778740b774744718e7e055031cc6382 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_41796720edd64a0e89277e4144436e6a }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e655525f2f1644bd8df4e3e9d0083b09 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_27646c2b196f454c94048a9f369d1bb4 }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_41796720edd64a0e89277e4144436e6a }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'deploytoazureusinggithub1'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8ae369dcc3554c988a9ae7550169c53a }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_27646c2b196f454c94048a9f369d1bb4 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f7a2e6ed4437462e913f8fc658e6384f }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_41796720edd64a0e89277e4144436e6a }}/appsvc/staticsite:${{ github.sha }}'
